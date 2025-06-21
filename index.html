@@ -31,13 +31,13 @@
             z-index: -1; /* Fica abaixo do conteúdo, mas acima do background-image */
         }
 
-        /* Estilos personalizados para os ícones - Mantidos visíveis e ajustados para tons de natureza */
+        /* Estilos personalizados para os ícones - TAMANHO AJUSTADO PARA PEQUENO */
         .icon {
             display: inline-block;
-            width: 32px; /* Ícones maiores */
-            height: 32px; /* Ícones maiores */
+            width: 24px; /* Ícones menores */
+            height: 24px; /* Ícones menores */
             vertical-align: middle;
-            margin-right: 12px; /* Mais espaço */
+            margin-right: 8px; /* Espaço ajustado */
         }
         .icon-tree {
             fill: #059669; /* Verde esmeralda escuro */
@@ -145,6 +145,22 @@
         .gallery-image:hover {
             transform: scale(1.05); /* Efeito de zoom no hover */
         }
+        /* Estilo para as referências inline */
+        .reference-link {
+            font-size: 0.85em; /* Ligeiramente maior */
+            display: inline-block; /* Permite padding e margem para clique */
+            padding: 0 2px; /* Pequeno padding para aumentar a área */
+            margin-left: 2px;
+            color: #4A90E2; /* Cor azul para destaque */
+            text-decoration: none; /* Sem sublinhado */
+            font-weight: bold;
+            border-radius: 4px; /* Leve arredondamento */
+            transition: background-color 0.2s ease;
+        }
+        .reference-link:hover {
+            text-decoration: underline; /* Sublinhado no hover */
+            background-color: #E0F2F7; /* Fundo leve no hover */
+        }
     </style>
 </head>
 <body class="text-gray-800 min-h-screen p-4 sm:p-8">
@@ -164,89 +180,116 @@
     <!-- Seção de Dados Coletados com Quadro e Centralização -->
     <section class="max-w-5xl mx-auto mb-16 bg-white p-8 rounded-3xl shadow-2xl border-4 border-blue-200">
         <div class="text-center">
-            <h2 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-10 leading-tight">
-                Métricas de Impacto e Resultados do Projeto
+            <h2 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+                Nosso Impacto em Números: Reciclagem vs. Produção de Origem Primária
             </h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-10">
+                Veja o ciclo de impacto do papel que reciclamos e compare com a produção de papel de origem primária.
+            </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Card: Papel Coletado -->
-            <div class="data-card">
-                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-4">
-                    <svg class="icon icon-recycle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/>
-                        <path d="M16 11H8V9h8c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2h-4c-.55 0-1-.45-1-1s.45-1 1-1h4c.55 0 1-.45 1-1V9z"/>
-                    </svg>
-                    Papel Coletado
-                </h3>
-                <p id="totalColetado" class="text-5xl font-extrabold text-blue-700">0.00 kg</p>
-                <p class="text-base text-gray-600 mt-3">Peso total de papel reciclado.</p>
-            </div>
-
-            <!-- Card: Árvores Poupadas -->
-            <div class="data-card">
-                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-4">
-                    <svg class="icon icon-tree" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 18h4v-2h-4v2zM5 22h14v-2H5v2zM12 2L4 15h5v5h6v-5h5L12 2z"/>
-                    </svg>
-                    Árvores Poupadas
-                </h3>
-                <p id="arvoresSalvas" class="text-5xl font-extrabold text-green-700">0</p>
-                <p class="text-base text-gray-600 mt-3">Estimativa de árvores poupadas.</p>
-            </div>
-
-            <!-- Card: Água (Produção Virgem) -->
-            <div class="data-card">
-                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-4">
-                    <svg class="icon icon-water" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2v6zm0-8h2v2h-2v-2z"/>
-                        <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-8h2v6h-2v-6z"/>
-                    </svg>
-                    Água (Produção Virgem)
-                </h3>
-                <p id="aguaProducaoVirgem" class="text-5xl font-extrabold text-red-700">0.00 L</p>
-                <p class="text-base text-gray-600 mt-3">Litros de água necessários para produzir o papel de forma virgem.</p>
-            </div>
-
-            <!-- Card: Água (Reciclagem) -->
-            <div class="data-card">
-                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-4">
-                    <svg class="icon icon-water" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2v6zm0-8h2v2h-2v-2z"/>
-                        <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-8h2v6h-2v-6z"/>
-                    </svg>
-                    Água (Reciclagem)
-                </h3>
-                <p id="aguaReciclagem" class="text-5xl font-extrabold text-blue-500">0.00 L</p>
-                <p class="text-base text-gray-600 mt-3">Litros de água utilizados no processo de reciclagem.</p>
-            </div>
-
-            <!-- NOVO CARD: Árvores Utilizadas (Produção) -->
-            <div class="data-card">
-                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-4">
-                    <svg class="icon icon-tree-used" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L4 15h5v5h6v-5h5L12 2zM10 18h4v-2h-4v2zM5 22h14v-2H5v2z"/>
-                    </svg>
-                    Árvores Utilizadas (Produção)
-                </h3>
-                <p id="arvoresUtilizadasProducao" class="text-5xl font-extrabold text-orange-600">0</p>
-                <p class="text-base text-gray-600 mt-3">Quantas árvores seriam usadas para fazer todo esse papel do zero.</p>
-            </div>
-
-            <!-- NOVO CARD ADICIONADO: Água Economizada (Net) -->
-            <div class="data-card">
-                <h3 class="text-2xl font-bold text-gray-800 flex items-center mb-4">
-                    <svg class="icon icon-water" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2v6zm0-8h2v2h-2v-2z"/>
-                        <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-8h2v6h-2v-6z"/>
-                    </svg>
-                    Água Economizada (Net)
-                </h3>
-                <p id="aguaEconomizada" class="text-5xl font-extrabold text-emerald-600">0.00 L</p>
-                <p class="text-base text-gray-600 mt-3">Litros de água poupados ao reciclar, em vez de produzir papel virgem.</p>
-            </div>
-
+        
+        <!-- NOVO CARD DE DESTAQUE PARA PAPEL COLETADO -->
+        <div class="data-card bg-gradient-to-r from-blue-100 to-green-100 border-green-400 text-center mb-10 p-8">
+            <h3 class="text-3xl font-extrabold text-gray-800 mb-4">
+                Nosso Esforço: Papel Coletado! 📈
+            </h3>
+            <p class="text-lg text-gray-700 mb-6">
+                Este é o ponto de partida de todo o nosso impacto. Quanto papel conseguimos desviar do lixo:
+            </p>
+            <p id="totalColetado" class="text-7xl font-extrabold text-blue-700 leading-none">0.00 kg</p>
+            <p class="text-sm text-gray-600 mt-1">
+                Dados do Projeto
+            </p>
         </div>
+
+        <!-- Agrupamentos de Métricas -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Grupo: Ao Reciclar Este Papel: O Impacto Positivo que Geramos -->
+            <div class="data-card bg-gradient-to-br from-green-50 to-green-100 border-green-300">
+                <h3 class="text-3xl font-bold text-green-800 flex items-center mb-6">
+                    Ao Reciclar Este Papel: O Impacto Positivo que Geramos ♻️
+                </h3>
+                <p class="text-base text-gray-700 mb-6">
+                    Graças à reciclagem do papel que coletamos, alcançamos estes benefícios ambientais:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <!-- Árvores Poupadas -->
+                    <div class="p-4 bg-emerald-100 rounded-lg border border-emerald-300">
+                        <h4 class="text-xl font-semibold text-gray-700 flex items-center mb-2">
+                            <svg class="icon icon-tree mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 18h4v-2h-4v2zM5 22h14v-2H5v2zM12 2L4 15h5v5h6v-5h5L12 2z"/>
+                            </svg>
+                            Árvores Poupadas
+                        </h4>
+                        <p id="arvoresSalvas" class="text-4xl font-extrabold text-green-700">0</p>
+                        <p class="text-sm text-gray-600 mt-1">O número estimado de árvores que não foram cortadas.</p>
+                    </div>
+
+                    <!-- Água Economizada (Líquida) -->
+                    <div class="p-4 bg-emerald-100 rounded-lg border border-emerald-300">
+                        <h4 class="text-2xl font-bold text-emerald-800 flex items-center mb-2">
+                            <svg class="icon icon-water mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2v6zm0-8h2v2h-2v-2z"/>
+                                <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-8h2v6h-2v-6z"/>
+                            </svg>
+                            Água Economizada (Líquida)
+                        </h4>
+                        <p id="aguaEconomizada" class="text-4xl font-extrabold text-emerald-600">0.00 L</p>
+                        <p class="text-sm text-gray-700 mt-1">Água poupada ao reciclar, em vez de produzir papel novo.</p>
+                    </div>
+
+                    <!-- Água (Processo de Reciclagem) -->
+                    <div class="p-4 bg-green-100 rounded-lg border border-green-300">
+                        <h4 class="text-xl font-semibold text-gray-700 flex items-center mb-2">
+                            <svg class="icon icon-water mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2v6zm0-8h2v2h-2v-2z"/>
+                                <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-8h2v6h-2v-6z"/>
+                            </svg>
+                            Água (Processo de Reciclagem)
+                        </h4>
+                        <p id="aguaReciclagem" class="text-4xl font-extrabold text-blue-500">0.00 L</p>
+                        <p class="text-sm text-gray-600 mt-1">Litros de água utilizados no processo de reciclagem deste papel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grupo: Impacto Ambiental da Produção de Papel de Origem Primária -->
+            <div class="data-card bg-gradient-to-br from-red-50 to-red-100 border-red-300">
+                <h3 class="text-3xl font-bold text-red-800 flex items-center mb-6">
+                    Impacto Ambiental da Produção de Papel de Origem Primária 🌳🏭
+                </h3>
+                <p class="text-base text-gray-700 mb-6">
+                    Se o papel que coletamos fosse descartado e produzido do zero, o impacto seria este:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <!-- Árvores para Produção de Origem Primária -->
+                    <div class="p-4 bg-orange-100 rounded-lg border border-orange-300">
+                        <h4 class="text-xl font-semibold text-gray-700 flex items-center mb-2">
+                            <svg class="icon icon-tree-used mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L4 15h5v5h6v-5h5L12 2zM10 18h4v-2h-4v2zM5 22h14v-2H5v2z"/>
+                            </svg>
+                            Árvores para Produção de Origem Primária
+                        </h4>
+                        <p id="arvoresUtilizadasProducao" class="text-4xl font-extrabold text-orange-600">0</p>
+                        <p class="text-sm text-gray-600 mt-1">Total de árvores que seriam cortadas para produzir este papel do zero.</p>
+                    </div>
+
+                    <!-- Água para Produção de Origem Primária -->
+                    <div class="p-4 bg-red-100 rounded-lg border border-red-300">
+                        <h4 class="text-xl font-semibold text-gray-700 flex items-center mb-2">
+                            <svg class="icon icon-water mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2v6zm0-8h2v2h-2v-2z"/>
+                                <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-18c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-8h2v6h-2v-6z"/>
+                            </svg>
+                            Água para Produção de Origem Primária
+                        </h4>
+                        <p id="aguaProducaoVirgem" class="text-4xl font-extrabold text-red-700">0.00 L</p>
+                        <p class="text-sm text-gray-600 mt-1">Litros de água que seriam gastos para produzir este papel do zero.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Seção de Atualização Manual de Dados -->
         <div class="data-card mt-12 bg-white">
@@ -264,20 +307,20 @@
                     <input type="number" id="inputArvoresSalvas" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 p-3 text-lg" placeholder="Ex: 5">
                 </div>
                 <div>
-                    <label for="inputAguaEconomizada" class="block text-base font-medium text-gray-700 mb-1">Água Economizada (L):</label>
+                    <label for="inputAguaEconomizada" class="block text-base font-medium text-gray-700 mb-1">Água Economizada (Líquida):</label>
                     <input type="number" id="inputAguaEconomizada" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 p-3 text-lg" placeholder="Ex: 500">
                 </div>
                 <div>
-                    <label for="inputAguaProducaoVirgem" class="block text-base font-medium text-gray-700 mb-1">Água Produção Virgem (L):</label>
+                    <label for="inputAguaProducaoVirgem" class="block text-base font-medium text-gray-700 mb-1">Água para Produção de Origem Primária (L):</label>
                     <input type="number" id="inputAguaProducaoVirgem" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 p-3 text-lg" placeholder="Ex: 5400">
                 </div>
                 <div>
-                    <label for="inputAguaReciclagem" class="block text-base font-medium text-gray-700 mb-1">Água Reciclagem (L):</label>
+                    <label for="inputAguaReciclagem" class="block text-base font-medium text-gray-700 mb-1">Água (Processo de Reciclagem) (L):</label>
                     <input type="number" id="inputAguaReciclagem" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 p-3 text-lg" placeholder="Ex: 25">
                 </div>
-                <!-- NOVO INPUT: Árvores Utilizadas (Produção) - ID CORRIGIDO -->
+                <!-- NOVO INPUT: Árvores Utilizadas (Produção) -->
                 <div>
-                    <label for="inputArvoresUtilizadasProducao" class="block text-base font-medium text-gray-700 mb-1">Árvores Utilizadas (Produção):</label>
+                    <label for="inputArvoresUtilizadasProducao" class="block text-base font-medium text-gray-700 mb-1">Árvores para Produção de Origem Primária:</label>
                     <input type="number" id="inputArvoresUtilizadasProducao" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 p-3 text-lg" placeholder="Ex: 10">
                 </div>
             </div>
@@ -299,11 +342,11 @@
                 <p class="mb-4">Para tornar nosso projeto ainda mais **incrível e divertido**, criamos o app **EcoCalculadora**! Ele é a nossa ferramenta secreta para acompanhar todo o papel que reciclamos na escola e ver, na hora, o impacto positivo que estamos a gerar.</p>
                 <p class="mb-4">Com o EcoCalculadora, cada vez que o papel é pesado e registado, o app automaticamente calcula:</p>
                 <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li>O **total de papel** que já coletámos.</li>
-                    <li>Quantas **árvores** foram poupadas.</li>
-                    <li>Quantos **litros de água** foram economizados (sim, é muita água!).</li>
-                    <li>A água usada na produção de papel novo (virgem) e na reciclagem.</li>
-                    <li>**Quantas árvores foram "gastas"** para produzir o papel que estamos a reciclar.</li>
+                    <li>O **total de papel** que já coletámos.<a href="#ref-proj-data" class="reference-link">[D.P.]</a></li>
+                    <li>Quantas **árvores** foram poupadas.<a href="#ref-arvores" class="reference-link">[1]</a></li>
+                    <li>Quantos **litros de água** foram economizados (sim, é muita água!).<a href="#ref-agua-eco" class="reference-link">[2]</a></li>
+                    <li>A água usada na produção de papel de origem primária<a href="#ref-agua-virgem" class="reference-link">[4]</a> e na reciclagem.<a href="#ref-agua-recicla" class="reference-link">[3]</a></li>
+                    <li>**Quantas árvores foram "gastas"** para produzir o papel que estamos a reciclar.<a href="#ref-arvores" class="reference-link">[1]</a></li>
                 </ul>
                 <p class="mt-4 font-semibold text-gray-800">É super fácil de usar e nos mostra em tempo real como pequenas ações fazem uma GRANDE diferença para o planeta!</p>
             </div>
@@ -417,18 +460,75 @@
         </h2>
         <div class="prose max-w-none text-gray-700 text-lg leading-relaxed">
             <h3 class="text-3xl font-bold mb-4 text-gray-800">1. O Impacto Secreto do Papel 🧐</h3>
-            <p>Sabia que o papel que usamos todos os dias tem uma história grandona? Para fazê-lo, muitas árvores são cortadas, e isso mexe com a vida de animais e plantas. Além disso, as fábricas de papel usam MUITA água e energia, e se não cuidarem bem, podem poluir o nosso ar e a nossa água. Por exemplo, para fazer <strong>só 1 quilo de papel novinho</strong> (que não é reciclado), gastamos cerca de <strong>540 litros de água</strong>! É como encher um monte de garrafas de refrigerante! 🤯</p>
+            <p>Sabia que o papel que usamos todos os dias tem uma história grandona? Para fazê-lo, muitas árvores são cortadas, e isso mexe com a vida de animais e plantas. Além disso, as fábricas de papel usam MUITA água e energia, e se não cuidarem bem, podem poluir o nosso ar e a nossa água. Por exemplo, para fazer <strong>só 1 quilo de papel de origem primária</strong><a href="#ref-agua-virgem" class="reference-link">[4]</a> (que não é reciclado), gastamos cerca de <strong>540 litros de água</strong><a href="#ref-agua-virgem" class="reference-link">[4]</a>! É como encher um monte de garrafas de refrigerante! 🤯</p>
             <p>Nosso projeto te ajuda a ver de perto essa jornada e o que podemos fazer de diferente!</p>
 
             <h3 class="text-3xl font-bold mt-10 mb-4 text-gray-800">2. A Magia da Reciclagem: Menos Água, Mais Vida! ✨</h3>
-            <p>Mas calma, tem uma solução superpoderosa: a **reciclagem**! Quando reciclamos papel, evitamos que mais árvores sejam cortadas. E o mais legal? Usamos muuuito menos água! Para fazer <strong>1 quilo de papel reciclado</strong>, precisamos de apenas <strong>2 a 2.5 litros de água</strong>. Isso é uma diferença enorme!</p>
-            <p>Significa que, a cada quilo de papel que jogamos no lugar certo para reciclagem, estamos salvando uns **537.5 litros de água**! 💧💦 Nosso projeto é tipo um jogo: quanto mais papel coletamos com o app <strong>EcoCalculadora</strong>, mais litros de água e mais árvores salvamos! O aplicativo que criamos na escola nos ajuda a contar tudo isso.</p>
+            <p>Mas calma, tem uma solução superpoderosa: a **reciclagem**! Quando reciclamos papel, evitamos que mais árvores sejam cortadas. E o mais legal? Usamos muuuito menos água! Para fazer <strong>1 quilo de papel reciclado</strong>, precisamos de apenas <strong>2 a 2.5 litros de água</strong><a href="#ref-agua-recicla" class="reference-link">[3]</a>. Isso é uma diferença enorme!</p>
+            <p>Significa que, a cada quilo de papel que jogamos no lugar certo para reciclagem, estamos salvando uns **537.5 litros de água**<a href="#ref-agua-eco" class="reference-link">[2]</a>! 💧💦 Nosso projeto é tipo um jogo: quanto mais papel coletamos com o app <strong>EcoCalculadora</strong>, mais litros de água e mais árvores salvamos! O aplicativo que criamos na escola nos ajuda a contar tudo isso.</p>
 
             <h3 class="text-3xl font-bold mt-10 mb-4 text-gray-800">3. Justiça Climática: Um Mundo Mais Justo e Verde para Todos! ⚖️🌳</h3>
             <p>O desmatamento não é justo! Ele afeta mais quem vive perto das florestas, como comunidades indígenas e pessoas que dependem da natureza para viver. Cortar árvores pode tirar a casa de muitas famílias e deixar o clima do planeta desequilibrado. A **Justiça Climática** é sobre isso: lutar para que todos, em todo lugar, tenham um ambiente saudável para viver.</p>
             <p>Quando reciclamos papel, não estamos só ajudando o meio ambiente, mas também as pessoas que sofrem mais com os problemas da natureza. É uma forma de construirmos um mundo mais **justo e sustentável** para nós e para as futuras gerações. Sua participação conta muito!</p>
         </div>
     </section>
+
+    <div class="divider"></div>
+
+    <!-- NOVA SEÇÃO: Referências Científicas e de Dados -->
+    <section class="max-w-4xl mx-auto mb-16 bg-gray-50 p-8 rounded-3xl shadow-inner border-t-4 border-b-4 border-gray-200">
+        <h2 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-8 text-center">
+            📚 Referências Científicas e de Dados
+        </h2>
+        <p class="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-8">
+            As informações e dados apresentados neste site são baseados em fontes confiáveis e pesquisas reconhecidas.
+            <strong class="text-red-600 block mt-4">Atenção: A natureza da web significa que links externos podem se tornar inativos ao longo do tempo. Recomenda-se a verificação periódica das fontes ou a busca por novas referências para validar os dados.</strong>
+        </p>
+        <ol class="list-decimal list-inside text-gray-700 text-base space-y-4">
+            <li id="ref-proj-data">
+                <strong class="text-gray-900">[D.P.] Dados do Projeto EcoCalculadora:</strong> Informações geradas diretamente pela coleta de dados da escola e pelo uso do aplicativo EcoCalculadora.
+            </li>
+            <li id="ref-arvores">
+                <strong class="text-gray-900">[1] Referência para Árvores (Poupadas / Produção):</strong> Estimativa de que para produzir 1 tonelada (1000 kg) de papel de origem primária, são utilizadas entre 17 a 24 árvores, o que equivale a aproximadamente 50 kg de papel por árvore.
+                <ul class="list-disc list-inside ml-6 mt-2 text-sm text-gray-600">
+                    <li>DataScope: <a href="https://datascope.io/pt/blog/20-dados-curiosos-sobre-a-producao-e-uso-do-papel/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"20 dados curiosos sobre produção e uso do papel"</a>.</li>
+                    <li>WorldAtlas: <a href="https://www.worldatlas.com/articles/how-many-trees-does-it-take-to-make-1-ton-of-paper.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"How Many Trees Does It Take To Make 1 Ton Of Paper?"</a>.</li>
+                    <li>MAPFRE: <a href="https://www.mapfre.com/pt-br/actualidade/sustentabilidade/reciclar-uma-tonelada-de-papel-salva-ate-20-arvores/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Reciclar uma tonelada de papel salva até 20 árvores"</a>.</li>
+                    <li>Benoit Cushman-Roisin (Dartmouth College): <a href="https://cushman.host.dartmouth.edu/courses/engs171/older/Paper.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"FOREST AND PAPER INDUSTRY" (PDF)</a>.</li>
+                </ul>
+            </li>
+            <li id="ref-agua-eco">
+                <strong class="text-gray-900">[2] Referência para Água Economizada (Líquida):</strong> Cálculo derivado da diferença entre a água para produção de papel de origem primária e a água para processo de reciclagem (540 L - 2.5 L = 537.5 L por kg de papel).
+                <ul class="list-disc list-inside ml-6 mt-2 text-sm text-gray-600">
+                    <li>Baseado em dados do Instituto Akatu para produção de origem primária e Inovar Ambiental/Gov.br para reciclagem.</li>
+                </ul>
+            </li>
+            <li id="ref-agua-recicla">
+                <strong class="text-gray-900">[3] Referência para Água (Processo de Reciclagem):</strong> Para produzir 1 quilo de papel reciclado, são necessários aproximadamente 2 a 2.5 litros de água.
+                <ul class="list-disc list-inside ml-6 mt-2 text-sm text-gray-600">
+                    <li>Inovar Ambiental: <a href="https://inovarambiental.com.br/2022/03/28/reciclagem-papel-minimiza-poluicao/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Reciclagem de papel minimiza a poluição ambiental"</a>.</li>
+                    <li>Portal Gov.br (antigo MMA): <a href="https://www.gov.br/mma/pt-br/noticias/como-e-porque-separar-o-lixo" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Como e porquê separar o lixo"</a> (referência a 2 mil litros por tonelada).</li>
+                </ul>
+            </li>
+            <li id="ref-agua-virgem">
+                <strong class="text-gray-900">[4] Referência para Água (Produção de Origem Primária):</strong> Para produzir 1 quilo de papel de origem primária, podem ser necessários cerca de 540 litros de água.
+                <ul class="list-disc list-inside ml-6 mt-2 text-sm text-gray-600">
+                    <li>Instituto Akatu: <a href="https://akatu.org.br/o-tempo-pais-podem-economizar-dinheiro-com-troca-de-livro/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"O Tempo: Pais podem economizar dinheiro com troca de livro - Instituto Akatu"</a> (Este artigo, publicado no próprio site do Akatu, menciona o dado de 540 litros por quilo de papel).</li>
+                    <li>Menos Um Lixo: <a href="https://www.menos1lixo.com.br/posts/reciclavel-x-reciclado-papel" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Menos Um Lixo - Reciclável x Reciclado | papel"</a> (cita Instituto Akatu).</li>
+                    <li>Prefeitura de Niterói: <a href="https://www.transformacaodigital.niteroi.rj.gov.br/indicadores-do-avanco-dos-servicos-digitais-e-do-processo-eletronico-em-niteroi-fev-24/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Boletim Informativo"</a> (cita Instituto Akatu).</li>
+                    <li>AASP: <a href="https://www.aasp.org.br/noticias/dia-mundial-do-meio-ambiente/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Dia Mundial do Meio Ambiente"</a> (cita Instituto Akatu).</li>
+                    <li>Corecon-MT: <a href="https://cofecon.org.br/cofecon/?p=23105" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Notícia sobre SEI"</a> (cita Instituto Akatu).</li>
+                </ul>
+            </li>
+            <li id="ref-desmatamento-sociais">
+                <strong class="text-gray-900">[5] Referência para Impactos Sociais do Desmatamento:</strong> Informações sobre como o desmatamento afeta comunidades indígenas e locais.
+                <ul class="list-disc list-inside ml-6 mt-2 text-sm text-gray-600">
+                    <li>Ministério do Meio Ambiente e Mudança do Clima (Brasil): <a href="https://www.gov.br/mma/pt-br/assuntos/povos-e-comunidades-tradicionais" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">"Assuntos: Povos e Comunidades Tradicionais"</a> (Este portal aborda como o desmatamento e outras pressões ambientais afetam diretamente a vida e os direitos de povos e comunidades tradicionais no Brasil).</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
 
     <!-- Rodapé -->
     <footer class="text-center mt-16 py-8 text-gray-600 text-sm">
@@ -460,12 +560,13 @@
             localStorage.setItem('projetoSustentabilidadeData', JSON.stringify(newData));
 
             // Atualizar os elementos na página
-            document.getElementById('totalColetado').textContent = `${totalColetado.toFixed(2)} kg`;
-            document.getElementById('arvoresSalvas').textContent = `${arvoresSalvas}`;
-            document.getElementById('aguaEconomizada').textContent = `${aguaEconomizada.toFixed(2)} L`;
-            document.getElementById('aguaProducaoVirgem').textContent = `${aguaProducaoVirgem.toFixed(2)} L`;
-            document.getElementById('aguaReciclagem').textContent = `${aguaReciclagem.toFixed(2)} L`;
-            document.getElementById('arvoresUtilizadasProducao').textContent = `${arvoresUtilizadasProducao}`;
+            document.getElementById('totalColetado').textContent = `${newData.totalColetado.toFixed(2)} kg `;
+            document.getElementById('arvoresSalvas').textContent = `${newData.arvoresSalvas} `;
+            document.getElementById('aguaEconomizada').textContent = `${newData.aguaEconomizada.toFixed(2)} L `;
+            document.getElementById('aguaProducaoVirgem').textContent = `${newData.aguaProducaoVirgem.toFixed(2)} L `;
+            document.getElementById('aguaReciclagem').textContent = `${newData.aguaReciclagem.toFixed(2)} L `;
+            document.getElementById('arvoresUtilizadasProducao').textContent = `${newData.arvoresUtilizadasProducao} `;
+
 
             alert('Dados atualizados e salvos no seu navegador!');
         });
@@ -474,12 +575,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedData = JSON.parse(localStorage.getItem('projetoSustentabilidadeData'));
             if (savedData) {
-                document.getElementById('totalColetado').textContent = `${savedData.totalColetado.toFixed(2)} kg`;
-                document.getElementById('arvoresSalvas').textContent = `${savedData.arvoresSalvas}`;
-                document.getElementById('aguaEconomizada').textContent = `${savedData.aguaEconomizada.toFixed(2)} L`;
-                document.getElementById('aguaProducaoVirgem').textContent = `${savedData.aguaProducaoVirgem.toFixed(2)} L`;
-                document.getElementById('aguaReciclagem').textContent = `${savedData.aguaReciclagem.toFixed(2)} L`;
-                document.getElementById('arvoresUtilizadasProducao').textContent = `${savedData.arvoresUtilizadasProducao}`;
+                document.getElementById('totalColetado').textContent = `${savedData.totalColetado.toFixed(2)} kg `;
+                document.getElementById('arvoresSalvas').textContent = `${savedData.arvoresSalvas} `;
+                document.getElementById('aguaEconomizada').textContent = `${savedData.aguaEconomizada.toFixed(2)} L `;
+                document.getElementById('aguaProducaoVirgem').textContent = `${savedData.aguaProducaoVirgem.toFixed(2)} L `;
+                document.getElementById('aguaReciclagem').textContent = `${savedData.aguaReciclagem.toFixed(2)} L `;
+                            document.getElementById('arvoresUtilizadasProducao').textContent = `${savedData.arvoresUtilizadasProducao} `;
 
                 // Preencher campos de input com os dados salvos para facilitar a edição
                 document.getElementById('inputTotalColetado').value = savedData.totalColetado;
